@@ -9,6 +9,8 @@ http://www.codeproject.com/Articles/463508/NET-CLR-Injection-Modify-IL-Code-duri
 
 My small contribution are SetRealGit sample and variation on the theme of dynamic methods/AOP.
 
+Some rules:
+
 1)32bit generic method modify not work for net 4.5.3 
 
 2)You should at least once to use native methods/types, which are used in universal methods(dynamic from TypeTemplate).  Differently tokens will be incorrectly defined.
