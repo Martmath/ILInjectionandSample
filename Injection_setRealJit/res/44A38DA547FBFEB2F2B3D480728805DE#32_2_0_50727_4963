@@ -1,0 +1,17 @@
+44A38DA547FBFEB2F2B3D480728805DE#32_2_0_50727_4963
+2607097;MethodDesc::s_pfnReset
+58673;MethodDesc::s_pfnIsGenericMethodDefinition
+60740;MethodDesc::s_pfnGetNumGenericMethodArgs
+363834;MethodDesc::s_pfnStripMethodInstantiation
+61058;MethodDesc::s_pfnHasClassOrMethodInstantiation
+151481;MethodDesc::s_pfnContainsGenericVariables
+181590;MethodDesc::s_pfnGetWrappedMethodDesc
+64279;MethodDesc::s_pfnGetDomain
+1316525;MethodDesc::s_pfnGetLoaderModule
+4779182;LoadedMethodDescIterator::s_pfnConstructor
+0;LoadedMethodDescIterator::s_pfnConstructor_v45
+0;LoadedMethodDescIterator::s_pfnConstructor_v46
+4927838;LoadedMethodDescIterator::s_pfnStart
+0;LoadedMethodDescIterator::s_pfnNext_v4
+4927969;LoadedMethodDescIterator::s_pfnNext_v2
+4927873;LoadedMethodDescIterator::s_pfnCurrent
