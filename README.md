@@ -12,7 +12,7 @@ My small contribution are SetRealGit sample and variation on the theme of dynami
 1)32bit generic method modify not work for net 4.5.3 
 
 2)You should at least once to use native methods/types, which are used in universal methods(dynamic from TypeTemplate).  Differently tokens will be incorrectly defined.
- for an example I used "new StringBuilder(s + IntPtr.Zero.ToString()+new IntPtr(100).ToString());" in "Magic" method special for this.
+For an example I used "new StringBuilder(s + IntPtr.Zero.ToString()+new IntPtr(100).ToString());" in "Magic" method special for this.
 
 3)Magic may not work without two special strings:
 RaiseIL.Dummy(RaiseIL.Dummy(), RaiseIL.Dummy(), RaiseIL.Dummy(), RaiseIL.Dummy(), RaiseIL.Dummy());
