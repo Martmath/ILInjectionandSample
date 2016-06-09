@@ -1,5 +1,5 @@
 # ILInjectionandSample
-Here combined three cool and really great projects:
+Here combined three cool and really great projects in 2012/2015 VS project:
 
 http://www.codeproject.com/Articles/14058/Parsing-the-IL-of-a-Method-Body Sorin Serban
 
