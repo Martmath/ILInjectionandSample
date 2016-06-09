@@ -32,3 +32,7 @@ OpCodes.Ldobj vs. ldind.i  (for IntPtr/UintPtr in 2015)
 I had to look for a workaround.
 
 7)SetRealGit appeared only in the 4.6 framework, so not use it for 2.0-3.5 net injection.
+
+8)Sometimes Direct Call the method does not work when the code changes. Method invoke via reflection more stable.
+
+9)UpdateILCodes does not change the code received through GetMethodBody().GetILAsByteArray. I have it always stayed original.
