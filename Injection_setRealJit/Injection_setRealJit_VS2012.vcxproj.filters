@@ -139,6 +139,15 @@
     <None Include="res\7871D332FFCA5B18C77313270E343048#64_4_6_1532_0">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="res\1B4243355F21CAB9EEFE09DBAFE78677#32_4_6_1590_0">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\6FAA411F45271A95A8445A715F129B5E#32_4_6_1076_0">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\65473F09BCF3DB3A67227311D1C7B691#64_4_6_1590_0">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

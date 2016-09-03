@@ -2,11 +2,11 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Reflection;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Runtime.CompilerServices;
 using System.Reflection.Emit;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 public static class InjectionHelper
 {
@@ -93,9 +93,17 @@ public static class InjectionHelper
         }
     }
 
+    public static void UpdateILCodesTest(MethodBase method, byte[] ilCodes)
+    {
+        //MessageBox.Show(method.Name);
+        var ee = typeof(InjectionHelper);
+        var uu=ee.GetMethod("UpdateILCodes", BindingFlags.Public | BindingFlags.Static);
+        RuntimeHelpers.PrepareMethod(uu.MethodHandle);
+        uu.Invoke(null, new object[] { method, ilCodes });
+    }
     public static void UpdateILCodes(MethodBase method, byte[] ilCodes)
     {
-        if (_updateILCodesMethod == null)
+       if (_updateILCodesMethod == null)
             throw new Exception("Please Initialize() first.");
 
         IntPtr pMethodTable = IntPtr.Zero;
@@ -124,14 +132,13 @@ public static class InjectionHelper
             token = method.MetadataToken;
         }
         catch
-        {        	
+        {
         }
-
-
+        Trace.WriteLine(method.Name);
         if (!_updateILCodesMethod(pMethodTable, pMethodHandle, token, pBuffer, ilCodes.Length))
             throw new Exception("UpdateILCodes() failed, please check the initialization is failed or uncompleted.");
     }
-
+    
     public static Status WaitForIntializationCompletion()
     {
         return _waitForIntializationCompletionDelegate();

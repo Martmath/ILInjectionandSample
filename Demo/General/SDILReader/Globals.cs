@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Windows.Forms;
-using System.Diagnostics;
 
 /*public enum AssemblyType
     {

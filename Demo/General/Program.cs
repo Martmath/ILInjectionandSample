@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 //namespace HelloWorld_V4
 //{
-    static class Program
+static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    
+    public static Form1 F;
+    [STAThread]
+    static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+        F=new Form1();
+            Application.Run(F);
         }
     }
 //}

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 
 
 [AttributeUsage(AttributeTargets.Method)]
@@ -81,7 +79,7 @@ public static class IniALL
 
 public static class Description
 {
-    private static bool It4;
+    public static bool It4;
     private static bool It64;
     private static  string Ver;
     public static bool SpecialVar;
@@ -100,6 +98,9 @@ public static class Description
             It4=false;
             var n = Assembly.GetExecutingAssembly().GetReferencedAssemblies().Where(x => x.Name == "System.Core");
             if (n.Count > 0) Ver= "<=" + n[0].Version.ToString(); else Ver="";
+#if RUNNING_ON_2
+            Ver=Ver +" (2.0)";
+#endif
         }
         It64=System.Runtime.InteropServices.Marshal.SizeOf(typeof(IntPtr)) == 8;
         GetDescription= Ver + (It64 ? " 64" : " 32");

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Threading;
 using System.Text;
 using System.Windows.Forms;
@@ -11,10 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.Reflection.Emit;
-using System.Linq.Expressions;
-using System.Runtime.Versioning;
 
 
 public partial class Form1 : Form
@@ -35,8 +28,9 @@ This may take a short while because it is searching the address from PDB symbol 
 
         Thread thread = new Thread(WaitForInitialization);
         thread.Start();
+        thread.Join();
         IniALL.Ini();
-        this.Text = this.Text + Description.GetDescription+(AOP.It2015?" 2015":" 2012");
+        this.Text = this.Text + Description.GetDescription + (AOP.It2015 ? " 2015" : " 2012");
     }
     
     private void WaitForInitialization()
@@ -46,12 +40,9 @@ This may take a short while because it is searching the address from PDB symbol 
         this.BeginInvoke(del, status);
 
         // the following code collects the offset cache to help me improve the code
-        if (status == InjectionHelper.Status.Ready)
+        /*if (status == InjectionHelper.Status.Ready)
         {
-            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            dir = Regex.Replace(dir, @"^(file\:\\)", string.Empty);
-            dir = Path.Combine(dir, "cache");
-
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase).Replace("file:\\", "") + "\\cache";           
             if (Directory.Exists(dir))
             {
                 string[] files = Directory.GetFiles(dir, "*.cache", SearchOption.TopDirectoryOnly);
@@ -91,7 +82,7 @@ This may take a short while because it is searching the address from PDB symbol 
                     }
                 }// foreach
             }// if
-        }
+        }*/
     }
 
     private delegate void InitializationCompletedDelegate(InjectionHelper.Status status);
@@ -321,6 +312,6 @@ This may take a short while because it is searching the address from PDB symbol 
         if (M[N].Name.Contains("GetType")) N = N==(M.Length - 1) ?  (N - 1) : ( N + 1);
         txtOutput.Text = M[N].Name + "\r\n" + (new MethodBodyReader(M[N])).GetBodyCode(M[N].GetMethodBody().GetILAsByteArray());     
     }
-   
+    
 }
 

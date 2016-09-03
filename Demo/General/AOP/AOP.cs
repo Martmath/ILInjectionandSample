@@ -1,14 +1,7 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Reflection;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
-using System.Runtime.CompilerServices;
 using System.Reflection.Emit;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Text;
 
 public class AOP
 {

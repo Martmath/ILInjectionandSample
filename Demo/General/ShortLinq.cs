@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
+
+#if RUNNING_ON_2
+    namespace System.Runtime.CompilerServices 
+    {
+        public class ExtensionAttribute : Attribute { }
+    }
+#endif
+    public delegate TResult Func<in T, out TResult>(T arg);
+    public delegate TResult Func<out TResult>();
+    public delegate void Action();
+
 
 public static class ShortLinq//for net 2.0
 {
