@@ -36,3 +36,5 @@ I had to look for a workaround.
 8)Sometimes Direct Call the method does not work when the code changes. Method invoke via reflection more stable.
 
 9)UpdateILCodes does not change the code received through GetMethodBody().GetILAsByteArray. I have it always stayed original.
+
+10)Build project with the "Optimize code" check mark!
