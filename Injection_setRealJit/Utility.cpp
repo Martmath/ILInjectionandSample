@@ -12,14 +12,6 @@
 #define MODULE_NAME _T("Injection32.dll")
 #endif
 
-
-
-
-
-
-
-
-
 CString CUtility::ComputeMd5HashForModule(HMODULE hModule)
 {
 	CString strRet;

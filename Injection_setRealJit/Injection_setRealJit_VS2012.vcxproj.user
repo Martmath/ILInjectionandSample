@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - X64|x64'">
-    <LocalDebuggerCommand>$(SolutionDir)bin\Test_$(Platform)_DotNet45_Release.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>$(SolutionDir)bin\Test_$(Platform)_DotNet46_Release.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - X64|Win32'">

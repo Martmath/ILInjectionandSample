@@ -35,23 +35,6 @@ ULONG_PTR *(__stdcall *p_getJit)();
 DWORD __stdcall CInjection::Initialize(LPVOID lpParameter )
 {
 	USES_CONVERSION;
-
-	HMODULE hInstance = (HMODULE)lpParameter;
-	// get the current directory
-	CString strCurrentDir = CUtility::GetCurrentDirectory();
-
-	// dbghelp.dll
-	{
-		CString strDbgHelpDll;
-		strDbgHelpDll.Format( _T("%s%s"), strCurrentDir, DBG_HELP_DLL);
-		HMODULE hModule = ::LoadLibrary(strDbgHelpDll);
-		if( hModule == NULL || !CPdbHelper::Initialize(hModule) )
-		{
-			Inspection::s_nStatus = Inspection::Status_Error_DbgHelpNotFound;
-			SetEvent( Inspection::s_hEvent );
-			return FALSE;
-		}
-	}
 	// find the JIT module
 	g_hJitModule = GetModuleHandleA("clrjit.dll");
 	if( !g_hJitModule )
@@ -62,7 +45,6 @@ DWORD __stdcall CInjection::Initialize(LPVOID lpParameter )
 		SetEvent( Inspection::s_hEvent );
 		return FALSE;
 	}
-
 	// find the CLR module
 	g_hClrModule = GetModuleHandleA("clr.dll");
 	if( g_hClrModule )
@@ -84,6 +66,23 @@ DWORD __stdcall CInjection::Initialize(LPVOID lpParameter )
 	// try to quick load the symbol address base on the binary hash
 	if( !CSymbolAddressCache::TryCache() )
 	{
+		HMODULE hInstance = (HMODULE)lpParameter;
+		// get the current directory
+		CString strCurrentDir = CUtility::GetCurrentDirectory();
+
+		// dbghelp.dll
+		{
+			CString strDbgHelpDll;
+			strDbgHelpDll.Format(_T("%s%s"), strCurrentDir, DBG_HELP_DLL);
+			HMODULE hModule = ::LoadLibrary(strDbgHelpDll);
+			if (hModule == NULL || !CPdbHelper::Initialize(hModule))
+			{
+				Inspection::s_nStatus = Inspection::Status_Error_DbgHelpNotFound;
+				SetEvent(Inspection::s_hEvent);
+				return FALSE;
+			}
+		}
+		
 		// get the pdb directory
 		CString strDestPath(strCurrentDir);
 		{

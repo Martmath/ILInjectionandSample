@@ -40,7 +40,7 @@ BOOL CSymbolAddressCache::TryCache(void)
 	LPVOID * pTemp;	
 
 	ULONG64 ulBaseAddr = (ULONG64)g_hClrModule;
-	std::map<CString, ULONG64> mpOffset = LoadCache(Inspection::GetFileCacheName());
+	std::map<CString, ULONG64> mpOffset = LoadCache(Inspection::GetFileCacheName());// Inspection::GetFileCacheName());
 
 	LOAD_OFFSET(MethodDesc::s_pfnReset);
 	LOAD_OFFSET(MethodDesc::s_pfnIsGenericMethodDefinition);
