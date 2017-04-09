@@ -9,6 +9,7 @@ public class AOP
     public static bool It2015;
     public static Int32 TokenGetCurrentMethod;
     public static Int32 TokenInt32;
+    public static Int32 TokenString;
     private static byte[] MyBody;    
     private static IEnumerable<byte> TokenGetCurrentMethodIE;    
     private static IEnumerable<byte> ToBodyBegin;
@@ -44,27 +45,35 @@ public class AOP
         {
             TokenInt32 = Addition.ToInt32(MyBody, 14);
             ToBodyAdd = Addition.ReadBytes(MyBody, 18, 5);
-            ToBodyRunDo = Addition.ReadBytes(MyBody, 23, 5);
+            TokenString = Addition.ToInt32(MyBody, 25);
+            ToBodyRunDo = Addition.ReadBytes(MyBody, 34, 5);
         }
         else {
             TokenInt32 =  Addition.ToInt32(MyBody, 15);  
             ToBodyAdd = Addition.ReadBytes(MyBody, 19, 5);
-            ToBodyRunDo = Addition.ReadBytes(MyBody, 25, 5);
-        }
+            TokenString = Addition.ToInt32(MyBody, 26);
+            ToBodyRunDo = Addition.ReadBytes(MyBody, 36, 5);
+        }    
     }
     
     private object Prepared(int o)
     {
-        return AOP.Do(this, MethodBase.GetCurrentMethod(), new MList() { o });
-     /* 0000 : ldarg.0(2)
-        0001 : call System.Reflection.MethodBase System.Reflection.MethodBase::GetCurrentMethod()(40 | 150 | 0 | 0 | 10) 167772310
-        0006 : newobj instance void MList::.ctor()(115 | 75 | 0 | 0 | 6) 100663371
-        0011 : dup(37)
-        0012 : ldarg.1(3)
-        0013 : box int  (140 | 105 | 0 | 0 | 1) 16777321
-        0018 : callvirt instance System.Void MList::Add()(111 | 74 | 0 | 0 | 6) 100663370
-        0023 : call System.Object AOP::Do()(40 | 46 | 0 | 0 | 6) 100663342
-        0028 : ret(42)*/
+        return AOP.Do(this, MethodBase.GetCurrentMethod(), new MList() { o, "test"}); 
+    /*-2012 0000 : ldarg.0  (2) 
+            0001 : call System.Reflection.MethodBase System.Reflection.MethodBase::GetCurrentMethod()  (40|135|0|0|10) 167772295
+            0006 : newobj instance void MList::.ctor()  (115|36|0|0|6) 100663332
+            0011 : stloc.0  (10) 
+            0012 : ldloc.0  (6) 
+            0013 : ldarg.1  (3) 
+            0014 : box int  (140|55|0|0|1) 16777271
+            0019 : callvirt instance System.Void MList::Add()  (111|35|0|0|6) 100663331
+            0024 : ldloc.0  (6) 
+            0025 : ldstr "test1879052150"  (114|118|15|0|112) 1879052150
+            0030 : callvirt instance System.Void MList::Add()  (111|35|0|0|6) 100663331
+            0035 : ldloc.0  (6) 
+            0036 : call System.Object AOP::Do()  (40|75|0|0|6) 100663371
+            0041 : ret  (42) 
+    */
     }
 
     private static byte[] GetRealBody0(MethodBase M)

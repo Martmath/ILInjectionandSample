@@ -30,7 +30,7 @@ This may take a short while because it is searching the address from PDB symbol 
         thread.Start();
         thread.Join();
         IniALL.Ini();
-        this.Text = this.Text + Description.GetDescription + (AOP.It2015 ? " 2015" : " 2012");
+        this.Text = this.Text + Description.GetDescription + (AOP.It2015 ? " 2015/2017" : " 2012");
     }
     
     private void WaitForInitialization()
@@ -305,13 +305,15 @@ This may take a short while because it is searching the address from PDB symbol 
     }
    
     private void button3_Click(object sender, EventArgs e)
-    {
+    {        
         var M = typeof(testType).GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
         int N = (new Random()).Next(M.Length);
         //N = 6;//4 var Y=typeof(AOP).GetMethod("Prepared", Addition.ALL);
+        //MessageBox.Show("test".RealToken().ToString());
         if (M[N].Name.Contains("GetType")) N = N==(M.Length - 1) ?  (N - 1) : ( N + 1);
         txtOutput.Text = M[N].Name + "\r\n" + (new MethodBodyReader(M[N])).GetBodyCode(M[N].GetMethodBody().GetILAsByteArray());     
     }
+
     
 }
 

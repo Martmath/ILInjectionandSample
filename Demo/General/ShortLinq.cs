@@ -11,7 +11,7 @@ using System.Reflection;
     public delegate TResult Func<in T, out TResult>(T arg);
     public delegate TResult Func<out TResult>();
     public delegate void Action();
-
+    public delegate void Action<T,K>(T t,K k);
 
 public static class ShortLinq//for net 2.0
 {
