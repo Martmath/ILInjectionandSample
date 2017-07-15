@@ -7,7 +7,7 @@
 #include "Utility.h"
 #include "Inspection.h"
 
-#include "cor.h"
+//#include "cor.h"
 #include <stddef.h>
 
 

@@ -30,7 +30,7 @@ BOOL Inspection::GetDotNetVersionInfo(HMODULE g_hClrModule)
 			g_tDotNetVersion = DotNetVersion_40;			
 		else if (nMajor == 4 && nMinor < 6)
 			g_tDotNetVersion = DotNetVersion_45;		
-		else if (nMajor == 4 && nMinor == 6)// && nBuildMajor == 1038)	
+		else if (nMajor == 4 && nMinor >= 6)// && nBuildMajor == 1038)	
 			g_tDotNetVersion = DotNetVersion_46;
 		else
 			return FALSE;
