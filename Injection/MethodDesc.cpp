@@ -3,7 +3,9 @@
 #include "Utility.h"
 #include "SymbolAddressCache.h"
 #include "Inspection.h"
-
+#include <list>
+#include <string>
+#include <algorithm>
 
 
 MethodDesc::PFN_Reset MethodDesc::s_pfnReset = NULL;
@@ -15,4 +17,6 @@ MethodDesc::PFN_ContainsGenericVariables MethodDesc::s_pfnContainsGenericVariabl
 MethodDesc::PFN_GetWrappedMethodDesc MethodDesc::s_pfnGetWrappedMethodDesc = NULL;
 MethodDesc::PFN_GetDomain MethodDesc::s_pfnGetDomain = NULL;
 MethodDesc::PFN_GetLoaderModule MethodDesc::s_pfnGetLoaderModule = NULL;
+MethodDesc::PFN_GetMethodName MethodDesc::s_pfnGetMethodName = NULL;
+std::list<std::string> MethodDesc::test;
 

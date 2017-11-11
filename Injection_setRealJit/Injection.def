@@ -1,5 +1,0 @@
-LIBRARY
-EXPORTS
-   UpdateILCodes					@1
-   GetStatus						@2
-   WaitForIntializationCompletion   @3

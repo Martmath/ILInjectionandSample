@@ -90,6 +90,7 @@ BOOL CPdbHelper::EnumClrSymbols(void)
 	}
 	s_pfnSymEnumSymbolsW(m_hProcess, m_dwClrBaseAddr, NULL, CPdbHelper::EnumSymProc, this);
 	s_pfnSymUnloadModule64( m_hProcess, (DWORD64)g_hClrModule);
+	MethodDesc::test.clear();
 	return TRUE;
 }
 
@@ -97,7 +98,7 @@ BOOL CALLBACK CPdbHelper::EnumSymProc( PSYMBOL_INFOW pSymInfo, ULONG SymbolSize,
 {
 	MethodDesc::MatchAddress( pSymInfo->Name, pSymInfo->Address);
 	LoadedMethodDescIterator::MatchAddress(pSymInfo);
-
+	
 	return TRUE;
 }
 

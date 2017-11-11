@@ -42,6 +42,7 @@ int __stdcall ICorJitCompiler::compileMethod(ICorJitInfo * pJitInfo, CORINFO_MET
 	if( pCorMethodInfo && Inspection::GetStatus() == 1 )
 	{
 		MethodDesc * pMethodDesc = (MethodDesc*)pCorMethodInfo->ftn;
+		LPCUTF8 test = pMethodDesc->GetMethodName();
 		// if the current method is not found, try to search its generic definition method*/
 		std::map< CORINFO_METHOD_HANDLE, ILCodeBuffer>::iterator iter = s_mpILBuffers.find((CORINFO_METHOD_HANDLE)pMethodDesc);
 		if( iter == s_mpILBuffers.end() && pMethodDesc->HasClassOrMethodInstantiation() )
